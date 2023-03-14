@@ -1,5 +1,5 @@
-from parser_urequests import suntime_scraping
-from parser_urequests import weather_and_uv_index_scraping
+from parser import suntime_scraping
+from parser import weather_and_uv_index_scraping
 
 import machine
 import ntptime
