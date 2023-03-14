@@ -112,7 +112,7 @@ while True:
 
 		# режим энергосбережения
 		print('Energy saving mode on')
-		machine.lightsleep(sunrise * 3600000)
+		machine.deepsleep(sunrise * 3600000)
 		print('Energy saving mode off')
 
 	if (current_hours >= sunrise) and (current_hours <= sunset):
