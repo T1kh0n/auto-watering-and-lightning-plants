@@ -110,11 +110,6 @@ while True:
 		# log
 		print(sunset, sunrise, daylight_hours)
 
-		# режим энергосбережения
-		print('Energy saving mode on')
-		machine.deepsleep(sunrise * 3600000)
-		print('Energy saving mode off')
-
 	if (current_hours >= sunrise) and (current_hours <= sunset):
 		weather_and_uv_index = weather_and_uv_index_scraping()
 		weather = weather_and_uv_index[0]
@@ -125,11 +120,6 @@ while True:
 
 		if weather in bad_weather:
 			bad_weather_count += 1
-
-		# режим энергосбережения
-		print('Energy saving mode on')
-		machine.lightsleep(3600000)
-		print('Energy saving mode off')
 
 		# log
 		print(weather)
