@@ -168,8 +168,3 @@ while True:
 
 			# выключение досветки
 			relay_1.value(0)
-
-		# режим энергосбережения
-		print('Energy saving mode on')
-		machine.lightsleep((24 - (time_lightning + sunset)) * 3600000 - 60000)
-		print('Energy saving mode off')
