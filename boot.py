@@ -15,7 +15,7 @@ def connect():
         print('Connecting to network...')
 
         wlan.active(True)
-        wlan.connect('ASUS_30', 'giant_5447')
+        wlan.connect('', '')
 
     print('Network config: ', wlan.ifconfig())
 count = 0
