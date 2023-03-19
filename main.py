@@ -19,7 +19,7 @@ relay_2 = machine.Pin(25, machine.Pin.OUT)
 relay_2.value(0)
 
 # подключение кнопки
-button = machine.Pin(13, machine.Pin.IN)
+button = machine.Pin(13, machine.Pin.IN, machine.Pin.PULL_UP)
 
 # список хорошей погоды
 good_weather = [
@@ -90,8 +90,9 @@ current_minutes = time.localtime()[4]
 
 while True:
 	# отключение системы
-	if button.value is True:
+	if button.value() == 0:
 		break
+
 	# чтение данных с датчика влажности
 	pot_soil_moisture_value = (pot_soil_moisture.read() - 1100) / 100
 
@@ -105,7 +106,8 @@ while True:
 
 	# log
 	print(current_hours, current_minutes, sep=':')
-	time.sleep(10)
+	print(button.value())
+	time.sleep(1)
 
 	if current_hours == 0:
 		sunrise, sunset = suntime_scraping()
