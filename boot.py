@@ -1,24 +1,31 @@
 import machine
 import network
+import time
+
+# подключение реле
+# досветка
+relay_1 = machine.Pin(26, machine.Pin.OUT)
+relay_1.value(0)
 
 
 def connect():
-	wlan = network.WLAN(network.STA_IF)
+    wlan = network.WLAN(network.STA_IF)
 
-	if not wlan.isconnected():
-		print('Connecting to network...')
+    if not wlan.isconnected():
+        print('Connecting to network...')
 
-		wlan.active(True)
-		wlan.connect('ESP32', 'm2io9a1g?')
+        wlan.active(True)
+        wlan.connect('ASUS_30', 'giant_5447')
 
-		while not wlan.isconnected():
-			pass
+    print('Network config: ', wlan.ifconfig())
+count = 0
 
-	print('Network config: ', wlan.ifconfig())
-
-	
-if __name__ == '__main__':
-	try:
-		connect()
-	except:
-		machine.reset()
+try:
+	connect()
+except:
+	print('Error')
+	for i in range(10):
+		relay_1.value(1)
+		time.sleep(3)
+		relay_1.value(0)
+		time.sleep(3)
