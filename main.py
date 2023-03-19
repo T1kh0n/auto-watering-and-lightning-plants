@@ -93,10 +93,10 @@ while True:
 	# контроль влажности
 	while pot_soil_moisture_value > 60:
 		# включение полива
-		rellay_2.value(1)
+		relay_2.value(1)
 
 	# выключение полива
-	rellay_2.value(0)
+	relay_2.value(0)
 
 	# log
 	print(current_hours, current_minutes, sep=':')
