@@ -18,6 +18,8 @@ relay_1.value(0)
 relay_2 = machine.Pin(25, machine.Pin.OUT)
 relay_2.value(0)
 
+# подключение кнопки
+button = machine.Pin(13, machine.Pin.IN)
 
 # список хорошей погоды
 good_weather = [
@@ -87,6 +89,9 @@ current_minutes = time.localtime()[4]
 
 
 while True:
+	# отключение системы
+	if button.value is True:
+		break
 	# чтение данных с датчика влажности
 	pot_soil_moisture_value = (pot_soil_moisture.read() - 1100) / 100
 
