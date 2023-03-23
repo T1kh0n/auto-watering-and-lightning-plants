@@ -94,10 +94,10 @@ while True:
 		break
 
 	# чтение данных с датчика влажности
-	pot_soil_moisture_value = (pot_soil_moisture.read() - 1100) / 100
+	pot_soil_moisture_value = (2700 / (pot_soil_moisture.read() + 1) * 100)
 
 	# контроль влажности
-	while pot_soil_moisture_value > 60:
+	while pot_soil_moisture_value < 100:
 		# включение полива
 		relay_2.value(1)
 
